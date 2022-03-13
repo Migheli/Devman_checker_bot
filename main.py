@@ -5,7 +5,7 @@ import telegram
 
 def main():
     chat_id = os.getenv('CHAT_ID')
-    bot = telegram.Bot(token=os.getenv("TELEGRAM_BOT_TOKEN"))
+    bot = telegram.Bot(token=os.getenv('TELEGRAM_BOT_TOKEN'))
     headers = {'Authorization': f'Token {os.getenv("DEVMAN_TOKEN")}'}
     params = {'timestamp': None}
     while True:
