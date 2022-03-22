@@ -2,11 +2,14 @@ import os
 import requests
 import time
 import telegram
+import logging
 
 
 def main():
+    logging.basicConfig(level=logging.DEBUG)
     chat_id = os.getenv('TELEGRAM_CHAT_ID')
     bot = telegram.Bot(token=os.getenv('TELEGRAM_BOT_TOKEN'))
+    logging.debug('Бот успешно запущен')
     headers = {'Authorization': f'Token {os.getenv("DEVMAN_TOKEN")}'}
     params = {'timestamp': None}
     while True:
