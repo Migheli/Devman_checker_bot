@@ -26,7 +26,7 @@ def main():
     logger.addHandler(TelegramLogsHandler(bot))
     logging.basicConfig(level=logging.DEBUG)
 
-    logging.debug('Бот успешно запущен')
+    logger.debug('Бот успешно запущен')
     headers = {'Authorization': f'Token {os.getenv("DEVMAN_TOKEN")}'}
     params = {'timestamp': None}
     while True:
