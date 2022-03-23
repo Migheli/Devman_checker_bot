@@ -5,10 +5,27 @@ import telegram
 import logging
 
 
+class TelegramLogsHandler(logging.Handler):
+
+    def __init__(self, tg_bot, chat_id):
+        super().__init__()
+        self.chat_id = chat_id
+        self.tg_bot = tg_bot
+
+    def emit(self, record):
+        log_entry = self.format(record)
+        self.tg_bot.send_message(chat_id=self.chat_id, text=log_entry)
+
+
 def main():
-    logging.basicConfig(level=logging.DEBUG)
-    chat_id = os.getenv('TELEGRAM_CHAT_ID')
     bot = telegram.Bot(token=os.getenv('TELEGRAM_BOT_TOKEN'))
+    chat_id = os.getenv('TELEGRAM_CHAT_ID')
+
+    logger = logging.getLogger('database')
+    logger.setLevel(logging.DEBUG)
+    logger.addHandler(TelegramLogsHandler(bot))
+    logging.basicConfig(level=logging.DEBUG)
+
     logging.debug('Бот успешно запущен')
     headers = {'Authorization': f'Token {os.getenv("DEVMAN_TOKEN")}'}
     params = {'timestamp': None}
