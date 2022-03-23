@@ -23,7 +23,7 @@ def main():
 
     logger = logging.getLogger('database')
     logger.setLevel(logging.DEBUG)
-    logger.addHandler(TelegramLogsHandler(bot))
+    logger.addHandler(TelegramLogsHandler(bot, chat_id))
     logging.basicConfig(level=logging.DEBUG)
 
     logger.debug('Бот успешно запущен')
