@@ -50,5 +50,6 @@ def main():
             logger.error(f'Бот упал со следующей ошибкой:')
             logger.exception(err)
 
+
 if __name__ == '__main__':
     main()
