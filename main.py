@@ -1,8 +1,8 @@
-import logging
 import os
 import requests
 import time
 import telegram
+import logging
 
 
 class TelegramLogsHandler(logging.Handler):
@@ -21,9 +21,9 @@ def main():
     logging.basicConfig(level=logging.DEBUG, format="%(process)d %(levelname)s %(asctime)s %(message)s")
     logger = logging.getLogger('database')
     logger.setLevel(logging.DEBUG)
+    chat_id = os.getenv('TELEGRAM_CHAT_ID')
     while True:
         bot = telegram.Bot(token=os.getenv('TELEGRAM_BOT_TOKEN'))
-        chat_id = os.getenv('TELEGRAM_CHAT_ID')
         logger.addHandler(TelegramLogsHandler(bot, chat_id))
         logger.debug('Бот успешно запущен')
         try:
