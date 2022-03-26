@@ -39,7 +39,6 @@ def main():
                     lesson_title, lesson_url = last_attempt['lesson_title'], last_attempt['lesson_url']
                     bot.send_message(chat_id=chat_id, text=
                         f'У Вас проверили работу "{lesson_title}". Cсылка на работу: {lesson_url}')
-                    a = 0 / 0
                 else:
                     params['timestamp'] = devman_api_response['timestamp_to_request']
             except requests.exceptions.ReadTimeout:
