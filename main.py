@@ -40,7 +40,6 @@ def main():
                     bot.send_message(chat_id=chat_id, text=
                         f'У Вас проверили работу "{lesson_title}". Cсылка на работу: {lesson_url}')
                 else:
-                    logger.debug(f'Получен ответ от Девмана: нет проверенных работ')
                     params['timestamp'] = devman_api_response['timestamp_to_request']
             except requests.exceptions.ReadTimeout:
                 pass
